@@ -16,6 +16,8 @@ const Navbar:React.FC = () => {
               justify-center'>
             <ul className="">
                 <Link href = "/" className='nav-link hover:bg-[#003566] py-[2rem] px-[2rem]'>Home</Link>
+                <Link href = "/MessagingPage" className='nav-link hover:bg-[#003566] py-[2rem] px-[2rem]'>Messaging</Link>
+                <Link href = "/Login" className='nav-link hover:bg-[#003566] py-[2rem] px-[2rem]'>Login</Link>
             </ul>
         </nav>
     </div>

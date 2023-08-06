@@ -13,6 +13,5 @@ datasource db {
 model message {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
-  username String
   content   String?
 }

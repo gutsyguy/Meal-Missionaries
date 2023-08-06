@@ -5,65 +5,9 @@ import { useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [username, setUsername] = useState('Anonymous');
-  const [content, setContent] = useState('');
-
-  const handleUsernameChange = (e:any) => {
-    let inputValue = e.target.value;
-    setUsername(inputValue);
-  };
-
-  const handleContentChange = (e:any) => {
-    let inputValue = e.target.value;
-    setContent(inputValue);
-  };
-
-  const sendPost = () =>{
-    let data = {
-      username,
-      content,
-    };
-    fetch('/api/message', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    }).then((res) => {
-      console.log('Response received');
-      if (res.status === 200) {
-        console.log('Response succeeded!');
-        setContent('')
-        setUsername('')
-      }
-      else{
-        setContent('')
-        setUsername('')
-        console.log("Response failed")
-        console.log(JSON.stringify(data))
-      }
-    })
-  }
-
   return (
     <main>
-      <div className="py-[5rem] bg-blue-500">
-        <div>
-
-        </div>
-        <p className="text-white flex justify-center text-[5rem]">Message</p>
-        <form onSubmit={sendPost} className="text-[3rem]">
-          <div className="pt-5 text-white flex flex-col px-[35rem]">
-            <label htmlFor="content" className="flex justify-center">Message</label>
-            <input className="text-black text-[2rem]" minLength={3} maxLength={150} value = {content} onChange={handleContentChange} required type="text" placeholder='Enter Content' autoComplete='off' id='name' />
-          </div>
-          <div className="flex justify-center">
-            <button className=' text-white py-2 mt-[2rem] bg-gray-700 font-medium rounded-md mb-4 px-[5rem] border-[#D8A206] border-2 border-solid' type='submit'>Submit</button>
-          </div>
-        </form>
-        
-
+      <div className="pt-[5rem] bg-blue-500">
         <div className="flex flex-col justify-center items-center  w-full mx-auto  border-gray-200 dark:border-gray-700 ">
         <div className="flex flex-col items-center mt-40 max-w-6xl px-10 rounded-lg p-20">
           <h1 className='text-center bold text-7xl text-white drop-shadow-[0_35px_35px_rgba(0,0,0,99)] '>Welcome to Meal Missionary</h1>
@@ -77,24 +21,23 @@ export default function Home() {
           <div className='flex flex-col bg-black bg-opacity-40 w-full  max-w-none items-center justify-center'>
             <div className='text-center max-w-2xl text-2xl'>
               <div className='flex flex-col items-center justify-center my-5 '>
-                <Image priority width={200} height={200} src={'/static/brainstorm.png'} alt={'firstStep'} className='rounded-full filter my-7' />
-                <h1 className='text-white mt-3'>Inspired by the track for “Best Social Good” we the Meals Missionary creators quickly agreed that we wanted this product to do something for the community. We wanted something that would not take years to come into play, something that could directly benefit and fight back against a specific social dilemma. After a very depressing conversation on social problems we decided on “world hunger and starvation”, we realized that world hunger and starvation arent given enough attention. That despite was most believe, world hunger and starvation is still a several social problem.</h1>
+                <Image priority width={200} height={200} src={'/brainstorm.png'} alt={'firstStep'} className='rounded-full filter my-7' />
+                <h1 className='text-white mt-3'>We wanted this product to do something for the community. We wanted something that would not take years to come into play, something that could directly benefit and fight back against a specific social dilemma. After a very depressing conversation on social problems we decided on “food waste and starvation”, we realized that tons of food is thrown out by restuarants by the end of the day, even though it is perfectly good food.</h1>
                 <div className='w-7 h-7 rounded-full bg-white my-7'/>
               </div>
               <div className='flex flex-col items-center justify-center my-5'>
-                <Image priority width={200} height={200} src={'/static/connection.png'} alt={'connection'} className='rounded-full filter'/>
+                <Image priority width={200} height={200} src={'/connection.png'} alt={'connection'} className='rounded-full filter'/>
                 <h1 className='text-white mt-7'>Having decided on a problem to specialize on, we soon realized that world hunger and starvations are both effects of poverty and inequality. This in turn can lead to instability in a countrys state. Because of which we came up with an organization that directly works to reduce starvation and world hunger. Through the redistribution of restaurants and supermarkets extra and or leftover food. </h1>
                 <div className='w-7 h-7 rounded-full bg-white my-7'/>
               </div>
               <div className='flex flex-col items-center justify-center mb-10'>
-                <Image width={200} height={200} src={'/logo.png'} alt={'finalproduct'} className='rounded-full'/>
+                <Image width={200} height={200} src={'/logo.svg'} alt={'finalproduct'} className='rounded-full'/>
                 <h1 className='text-white mt-7'>By connecting charities to a database containing a variety of businesses in food services that have signed up to donate and help those in need. By also bringing more awareness to this problem.</h1>
               </div>
             </div>
         </div>
         </div>
       </div>
-      
       </div>
     </main>
   );
