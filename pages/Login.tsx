@@ -46,7 +46,7 @@ export default function Login() {
           <div className='flex flex-col sm:w-7/12 sm:mr-8'>
             <div className='relative w-full  pb-10' >
               <NextImage
-                src={'/Logo.svg'}
+                src={'/sustenance.svg'}
                 alt={'LoginImg'}
                 width={687 * 0.9}
                 height={456 * 0.9}
