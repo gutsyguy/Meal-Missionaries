@@ -39,14 +39,14 @@ export default function Login() {
   }
   
   return (
-    <div className="bg-blue-500 bg-cover bg-center">
+    <div className="bg-blue-900 bg-cover bg-center">
       {loading && <Loader />}
       <div className='flex flex-col justify-center py-12 bg-blue-500 bg-opacity-60'>
         <div className='flex flex-col sm:flex-row max-w-7xl mx-auto p-4 sm:p-8 lg:p-16'>
           <div className='flex flex-col sm:w-7/12 sm:mr-8'>
             <div className='relative w-full  pb-10' >
               <NextImage
-                src={'/logo.png'}
+                src={'/Logo.svg'}
                 alt={'LoginImg'}
                 width={687 * 0.9}
                 height={456 * 0.9}
@@ -66,9 +66,9 @@ export default function Login() {
               <h1 className='text-gray-200  dark:drop-shadow-[0_35px_35px_rgba(255,255,255,0.4)] font-bold text-[4em]'>Meal Missionary</h1>
             </div>
             <div className='mx-7 flex flex-col'>
-              <LogInWithCard iconForProvider={'providers/googleLogo.svg'} textForProvider={'Continue with Google'} providerName={'google'} />
-              <LogInWithCard iconForProvider={systemTheme === 'light' ? 'providers/githubLogoDark.svg' : 'providers/githubLogoLight.svg'} textForProvider={'Continue with Github'} providerName={'github'} />
-              <LogInWithCard iconForProvider={'providers/facebookLogo.svg'} textForProvider={'Continue with Facebook'} providerName={'facebook'} />
+              <LogInWithCard iconForProvider={'/googleLogo.png'} textForProvider={'Continue with Google'} providerName={'google'} />
+              <LogInWithCard iconForProvider={systemTheme === 'light' ? 'providers/githubLogoDark.png' : 'providers/githubLogoLight.png'} textForProvider={'Continue with Github'} providerName={'github'} />
+              <LogInWithCard iconForProvider={'/facebookLogo.png'} textForProvider={'Continue with Facebook'} providerName={'facebook'} />
             </div>
           </div>
         </div>
