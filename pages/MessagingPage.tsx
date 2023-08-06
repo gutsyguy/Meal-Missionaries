@@ -1,7 +1,21 @@
 import React,{useState} from 'react'
 import {useSession} from 'next-auth/react'
+import { GetServerSideProps } from 'next'
+import { PrismaClient } from '@prisma/client'
 
-const MessagingPage = () => {
+export async function getServerSideProps() {
+  const prisma = new PrismaClient()
+
+  const messages = await prisma.message.findMany()
+  
+  return {
+    props: {
+      messages: JSON.parse(JSON.stringify(messages)) // Prisma returns a non-serializable object, so we need to stringify and parse it
+    }
+  }
+}
+
+const MessagingPage = ({messages}:any) => {
 
   const {data: session}:any = useSession()
 
@@ -23,7 +37,6 @@ const MessagingPage = () => {
     };
   
     const sendMessage = (event: React.FormEvent) =>{
-      event.preventDefault();
       let data = {
         username,
         content,
@@ -52,16 +65,25 @@ const MessagingPage = () => {
     }
 
   return (
-    <div className='bg-blue-900 py-[16rem] bg-repeat'>
+    <div className='bg-blue-900 py-[3rem] pb-[27rem]'>
+      <div className='px-[0rem]'>
         <p className="text-white flex justify-center text-[5rem]">Message</p>
-        <form onSubmit={sendMessage} className=" text-[3rem]">
-          <div className="pt-5  text-white flex flex-col px-[10rem] ">
-            <label htmlFor="content" className="flex justify-center">Message</label>
+        <div className='flex flex-col px-[12rem]' >
+          {messages.map((message:any, index:any) => (
+            <div key={index} className='text-white rounded-md my-2'>
+              <h2 className=' text-xl'>{message.username}</h2>
+              <p>{message.content}</p>
+            </div>
+          ))}
+        </div>
+        <form onSubmit={sendMessage} className=" text-[3rem] bg-blue-900 p-[5rem] ">
+          <div className="pt-5  text-white flex flex-col pr-[10rem] ">
             <input 
-            className="text-black text-[2rem]  border-2 border-black rounded-xl inset-x-[10rem] bottom-[3rem] absolute" 
+            className="text-black text-[2rem]  border-2 border-black rounded-xl right-[10rem] left-[10rem] bottom-[1rem]  fixed" 
             minLength={3} maxLength={150} value = {content} onChange={handleContentChange} required type="text" placeholder='Enter Content' autoComplete='off' id='name' />
           </div>
         </form>
+      </div>
     </div>
   )
 }
