@@ -5,7 +5,7 @@ const MessagingPage = () => {
 
   const {data: session}:any = useSession()
 
-    const [username, setUsername] = useState('');
+    const [username, setUsername] = useState('Anonynmous User');
     const [content, setContent] = useState('');
   
     const handleUsername = () => {
@@ -22,7 +22,8 @@ const MessagingPage = () => {
       setContent(inputValue);
     };
   
-    const sendPost = () =>{
+    const sendMessage = (event: React.FormEvent) =>{
+      event.preventDefault();
       let data = {
         username,
         content,
@@ -51,16 +52,15 @@ const MessagingPage = () => {
     }
 
   return (
-    <div className='bg-blue-500 pt-[4rem]'>
+    <div className='bg-blue-900 py-[16rem] bg-repeat'>
         <p className="text-white flex justify-center text-[5rem]">Message</p>
-        <form onSubmit={sendPost} className="text-[3rem]">
-        <div className="pt-5 text-white flex flex-col px-[35rem]">
+        <form onSubmit={sendMessage} className=" text-[3rem]">
+          <div className="pt-5  text-white flex flex-col px-[10rem] ">
             <label htmlFor="content" className="flex justify-center">Message</label>
-            <input className="text-black text-[2rem]" minLength={3} maxLength={150} value = {content} onChange={handleContentChange} required type="text" placeholder='Enter Content' autoComplete='off' id='name' />
-        </div>
-        <div className="flex justify-center">
-            <button className=' text-white py-2 mt-[2rem] bg-gray-700 font-medium rounded-md mb-4 px-[5rem] border-[#D8A206] border-2 border-solid' type='submit'>Submit</button>
-        </div>
+            <input 
+            className="text-black text-[2rem]  border-2 border-black rounded-xl inset-x-[10rem] bottom-[3rem] absolute" 
+            minLength={3} maxLength={150} value = {content} onChange={handleContentChange} required type="text" placeholder='Enter Content' autoComplete='off' id='name' />
+          </div>
         </form>
     </div>
   )

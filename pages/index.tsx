@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <main>
-      <div className="pt-[5rem] bg-blue-500">
+      <div className="pt-[5rem] bg-blue-900">
         <div className="flex flex-col justify-center items-center  w-full mx-auto  border-gray-200 dark:border-gray-700 ">
         <div className="flex flex-col items-center mt-40 max-w-6xl px-10 rounded-lg p-20">
           <h1 className='text-center bold text-7xl text-white drop-shadow-[0_35px_35px_rgba(0,0,0,99)] '>Welcome to Meal Missionary</h1>
