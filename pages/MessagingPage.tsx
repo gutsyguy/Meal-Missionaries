@@ -67,7 +67,7 @@ const MessagingPage = ({messages}:any) => {
   return (
     <div className='bg-blue-900 py-[3rem] pb-[27rem]'>
       <div className='px-[0rem]'>
-        <p className="text-white flex justify-center text-[5rem]">Message</p>
+        <p className="text-white flex justify-center text-[5rem]">Messages</p>
         <div className='flex flex-col px-[12rem]' >
           {messages.map((message:any, index:any) => (
             <div key={index} className='text-white rounded-md my-2'>
