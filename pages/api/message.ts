@@ -1,40 +1,21 @@
-import Cors from 'cors';
-import Pusher from 'pusher';
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { PrismaClient } from '@prisma/client'
 
-// Initialize Pusher
-const pusher = new Pusher({
-    appId: "",
-    key: "",
-    secret: "",
-    cluster: "",
-    useTLS: true
-});
+const prisma = new PrismaClient()
 
-export default async function handler(req:NextApiRequest, res:NextApiResponse) {
-    // Initialize the cors middleware
-    const cors = Cors({
-        origin: ['http://localhost:3000', 'http://localhost:8080', 'http://localhost:4200'],
-        methods: ['POST'],
+export default async function handle(req:any, res:any) {
+  if (req.method === 'POST') {
+    const { username, content } = req.body;
+    const post = await prisma.message.create({
+      data: {
+        username,
+        content,
+      },
     });
-
-    // Run the cors middleware
-    return new Promise((resolve:any, reject:any) => {
-        cors(req, res, (result) => {
-            if (result instanceof Error) {
-                reject(result);
-            }
-
-            // Continue with the request handling if no error occurred
-            if (req.method === 'POST') {
-                const { username, message } = req.body;
-                pusher.trigger('chat', 'message', { username, message });
-                res.json([]);
-                resolve();
-            } else {
-                res.status(405).end(); //Method Not Allowed
-                resolve();
-            }
-        });
-    });
+    res.status(200).json(post);
+  } else if (req.method === 'GET') {
+    const posts = await prisma.message.findMany()
+    res.status(200).json(posts)
+  } else {
+    res.status(405).send(`Method ${req.method} Not Allowed`)
+  }
 }
