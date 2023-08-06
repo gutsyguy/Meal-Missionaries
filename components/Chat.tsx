@@ -9,7 +9,7 @@ const Chat = () => {
     const ablyRealtime = new ably.Realtime("Api");
     const channel = ablyRealtime.channels.get("chat");
 
-    channel.subscribe("message", (message:any) => {
+    channel.subscribe("Send!", (message:any) => {
       setMessages((prevMessages: string[]) => [...prevMessages, message.data]);
     });
 
@@ -24,7 +24,7 @@ const Chat = () => {
   };
 
   const sendMessage = () =>{
-    let data = { messages}
+    let data = {messages}
     fetch('/api/posts', {
       method: 'POST',
       headers: {
@@ -59,13 +59,13 @@ const Chat = () => {
         Chat
       </h1>
       {messages.map((message, index) => (
-        <p className="text-black" key={index}>{message}</p>
+        <p className="text-black" key={index}>{message} </p>
       ))}
 
       <form onSubmit={sendMessage} className="text-[3rem]">
         <div className="pt-20 text-white flex flex-col px-[10rem]">
-          <label htmlFor="content" className="flex justify-center">Content</label>
-          <input className="text-black" minLength={3} maxLength={150} value = {inputMessage} onChange={handleMessageChange} required type="text" placeholder='Enter message' autoComplete='off' id='name' />
+          <label htmlFor="content" className="flex justify-center">Enter a Resturant </label>
+          <input className="text-black" minLength={3} maxLength={150} value = {inputMessage} onChange={handleMessageChange} required type="text" placeholder='Enter Content' autoComplete='off' id='name' />
         </div>
         <div className="flex justify-center">
           <button className=' text-white py-2 mt-[2rem] bg-gray-700 font-medium rounded-md mb-4 px-[5rem] border-[#D8A206] border-2 border-solid' type='submit'>Submit</button>

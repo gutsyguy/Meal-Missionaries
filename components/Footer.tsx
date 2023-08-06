@@ -29,7 +29,7 @@ export default function Footer() {
             href="/"
             className="text-white hover:text-gray-300 transition"
           >
-            All rights protected @2023
+            All Rights Reserved @2023
           </Link>
         </div>
       </div>
