@@ -1,16 +1,18 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useState } from "react";
+import Slider from "@/components/Slider";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
     <main>
-      <div className="pt-[5rem] bg-blue-900">
+      <div className="pt-[10rem] bg-blue-900">
+          {/* <Slider/> */}
         <div className="flex flex-col justify-center items-center  w-full mx-auto  border-gray-200 dark:border-gray-700 ">
-        <div className="flex flex-col items-center mt-40 max-w-6xl px-10 rounded-lg p-20">
-          <h1 className='underline text-center bold text-8xl text-white drop-shadow-[0_35px_35px_rgba(0,0,0,99)]'> Meal Missionary! </h1>
+        <div className="flex flex-col items-center mt-40 max-w-6xl px-10 rounded-lg">
+          <h1 className='underline text-center bold text-8xl text-white drop-shadow-[0_35px_35px_rgba(0,0,0,99)]'> Sustenance Support! </h1>
           <h3 className='text-center text-3xl text-gray-100 drop-shadow-[0_35px_35px_rgba(0,0,0,99)] mt-7'>A non-profit organization that allows restaurants, supermarkets and businesses with a surplus of food the opportunity of easily donating their leftover food to shelters and charities that can deliver to those in need. Meal Missionarys goal is to reduce food waste while also helping to feed the hungry and support the community. Consequently bringing awareness to world hunger </h3>
         </div>
         <div className='w-full'>

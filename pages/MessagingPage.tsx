@@ -18,18 +18,9 @@ export async function getServerSideProps() {
 const MessagingPage = ({messages}:any) => {
 
   const {data: session}:any = useSession()
-
-    const [username, setUsername] = useState('Anonynmous User');
+    let name:String
+    const [username, setUsername] = useState("Anonymous User");
     const [content, setContent] = useState('');
-  
-    const handleUsername = () => {
-      if (session) {
-        setUsername(session.user?.name)
-      }
-      else{
-        setUsername('Anonymous User')
-      }
-    };
   
     const handleContentChange = (e:any) => {
       let inputValue = e.target.value;
@@ -37,6 +28,12 @@ const MessagingPage = ({messages}:any) => {
     };
   
     const sendMessage = (event: React.FormEvent) =>{
+      if (session) {
+        setUsername(session.user.name)
+      }
+      else{
+        setUsername('e')
+      }
       let data = {
         username,
         content,
