@@ -51,7 +51,7 @@ export default function Container(props) {
   const router = useRouter();
   const meta = {
     title: 'Meal Missionary',
-    description: `Help others`,
+    description: `Missionaries with a Meal!`,
     type: 'website',
     ...customMeta
   };
